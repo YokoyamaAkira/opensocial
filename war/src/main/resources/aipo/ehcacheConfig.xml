@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Aipo is a groupware program developed by Aimluck,Inc.
+    Copyright (C) 2004-2011 Aimluck,Inc.
+    http://www.aipo.com
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="ehcache.xsd">
+
+  <!--
+    Mandatory Default Cache configuration. These settings will be applied to caches
+    created programmatically using CacheManager.add(String cacheName).
+    
+    The defaultCache has an implicit name "default" which is a reserved cache name.
+  -->
+  <defaultCache
+    maxElementsInMemory="1000"
+    eternal="false"
+    timeToIdleSeconds="300"
+    timeToLiveSeconds="600"
+    overflowToDisk="false"
+    diskPersistent="false"
+    memoryStoreEvictionPolicy="LFU"/>
+
+  <!--
+    gadget specs and message bundles have additional caching policies that
+    allow us to cache the objects indefinitely when using an LFU or LRU cache.
+  -->
+  <cache name="gadgetSpecs"
+    maxElementsInMemory="1000"
+    eternal="true"
+    overflowToDisk="false"
+    diskPersistent="false"
+    memoryStoreEvictionPolicy="LFU"/>
+
+  <cache name="messageBundles"
+    maxElementsInMemory="1000"
+    eternal="true"
+    overflowToDisk="false"
+    diskPersistent="false"
+    memoryStoreEvictionPolicy="LFU"/>
+
+  <!-- Used to cache parsed HTML DOMs based on their content -->
+  <cache name="parsedDocuments"
+    maxElementsInMemory="1000"
+    eternal="true"
+    overflowToDisk="false"
+    diskPersistent="false"
+    memoryStoreEvictionPolicy="LFU"/>
+
+  <!-- Used to cache parsed CSS DOMs based on their content -->
+  <cache name="parsedCss"
+    maxElementsInMemory="1000"
+    eternal="true"
+    overflowToDisk="false"
+    diskPersistent="false"
+    memoryStoreEvictionPolicy="LFU"/>
+
+  <!-- 
+    This configuration is only suitable for a modest sized HTTP cache.
+    You should configure a shared cache for production use.
+  -->
+  <cache name="httpResponses"
+    maxElementsInMemory="10000"
+    eternal="true"
+    overflowToDisk="false"
+    diskPersistent="false"
+    memoryStoreEvictionPolicy="LFU"/>
+
+  <!-- Used to cache parsed expressions based on their content -->
+  <cache name="expressions"
+    maxElementsInMemory="1000"
+    eternal="true"
+    overflowToDisk="false"
+    diskPersistent="false"
+    memoryStoreEvictionPolicy="LFU"/>
+
+  <!-- Used to cache cajoled documents based on their content -->
+  <cache name="cajoledDocuments"
+    maxElementsInMemory="1000"
+    eternal="false"
+    timeToIdleSeconds="300"
+    timeToLiveSeconds="600"
+    overflowToDisk="false"
+    diskPersistent="false"
+    memoryStoreEvictionPolicy="LFU"/>
+</ehcache>
